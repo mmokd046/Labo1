@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Laboratory 1</string>
+    <string name="loan_amount_prompt">Loan amount:&#160;&#160;</string>
+    <string name="interest_rate_prompt">Interest rate:&#160;&#160;</string>
+    <string name="loan_period_prompt">Months:&#160;&#160;</string>
+    <string name="loan_button_text">Calculate Payments:&#160;&#160;</string>
+    <string name="monthly_payment_prompt">Monthly Payment:&#160;&#160;</string>
+    <string name="total_payments_prompt">Total Payments :&#160;&#160;</string>
+</resources>

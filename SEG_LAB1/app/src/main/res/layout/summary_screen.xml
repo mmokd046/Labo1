@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TableLayout xmlns:android= "http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:stretchColumns="1"
+        android:shrinkColumns="1">
+
+
+
+        <TableRow android:layout_marginTop="100dp">
+            <TextView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/monthly_payment_prompt"
+                android:gravity="right"/>
+            <TextView android:id="@+id/monthly_payment_result"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#ff0000"
+                android:gravity="left"/>
+        </TableRow>
+        <TableRow>
+            <TextView android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/total_payments_prompt"
+                android:gravity="right"/>
+            <TextView android:id="@+id/total_payment_result"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#ff0000"
+                android:gravity="left"/>
+        </TableRow>
+    </TableLayout>
+</android.support.constraint.ConstraintLayout>
