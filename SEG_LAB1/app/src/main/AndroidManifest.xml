@@ -16,6 +16,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.example.laboratory1.MainActivity" />
+        <activity android:name="com.example.laboratory1.SummaryScreen" />
+        <activity android:name="com.example.laboratory1.Details" />
+        <activity android:name="com.example.laboratory1.Settings" />
     </application>
 
 </manifest>

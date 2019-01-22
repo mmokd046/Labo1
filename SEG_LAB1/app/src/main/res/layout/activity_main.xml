@@ -40,26 +40,4 @@
             android:layout_height="wrap_content"
             android:onClick="showLoanPayments"/>
     </TableRow>
-    <TableRow android:layout_marginTop="20dp">
-        <TextView android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/monthly_payment_prompt"
-            android:gravity="right"/>
-        <TextView android:id="@+id/monthly_payment_result"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#ff0000"
-            android:gravity="left"/>
-    </TableRow>
-    <TableRow>
-        <TextView android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/total_payments_prompt"
-            android:gravity="right"/>
-        <TextView android:id="@+id/total_payment_result"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#ff0000"
-            android:gravity="left"/>
-    </TableRow>
 </TableLayout>
