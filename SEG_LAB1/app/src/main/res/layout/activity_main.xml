@@ -34,10 +34,19 @@
             android:layout_height="wrap_content"/>
     </TableRow>
     <TableRow>
-        <Button android:text="@string/loan_button_text"
-            android:layout_span="2"
-            android:layout_width="match_parent"
+
+        <Button
+            android:layout_width="311dp"
             android:layout_height="wrap_content"
-            android:onClick="showLoanPayments"/>
+            android:layout_span="2"
+            android:onClick="showLoanPayments"
+            android:text="@string/loan_button_text" />
+        <ImageView
+            android:id="@+id/phone_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_settings_applications_black_24dp" />
     </TableRow>
+
 </TableLayout>
