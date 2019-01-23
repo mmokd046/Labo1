@@ -1,4 +1,4 @@
-package com.example.laboratory1;
+package com.example.seg_lab1;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+
 
 import java.text.DecimalFormat;
 
@@ -59,18 +60,6 @@ public class MainActivity extends AppCompatActivity {
         mInterestRate = (EditText)findViewById(R.id.interest_rate);
         mLoanPeriod= (EditText)findViewById(R.id.loan_period);
 
-        spinner = (Spinner)findViewById(R.id.currency);
-        secondSpinner = (Spinner)findViewById(R.id.payment_frequency);
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this,
-                android.R.layout.simple_spinner_item,currency);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-
-        ArrayAdapter<String> secondAdapter = new ArrayAdapter<String>(MainActivity.this,
-                android.R.layout.simple_spinner_item,payment_mode);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        secondSpinner.setAdapter(secondAdapter);
     }
 
     public void OnFinish(View view) {
@@ -78,8 +67,7 @@ public class MainActivity extends AppCompatActivity {
         answers[0] =  mLoanAmount.getText().toString();
         answers[1] = mInterestRate.getText().toString();
         answers[2] = mLoanPeriod.getText().toString();
-        answers[3] = spinner.getSelectedItem().toString();
-        answers[4] = secondSpinner.getSelectedItem().toString();
+
 
 
         boolean invalid = false;
@@ -117,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
             alert.show();
         }
         else{
-            Intent intent = new Intent(this, com.example.laboratory1.SummaryScreen.class);
+            Intent intent = new Intent(this, SummaryScreen.class);
             if (spinner.getSelectedItem().toString().equals("bi-weekly")) {
                 intent.putExtra("MORTGAGE_AMOUNT",  answers[0]);
                 intent.putExtra("INTEREST_RATE",  answers[1]);

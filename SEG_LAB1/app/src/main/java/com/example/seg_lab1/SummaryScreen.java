@@ -1,4 +1,4 @@
-package com.example.laboratory1;
+package com.example.seg_lab1;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +9,8 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+
 
 import java.text.DecimalFormat;
 
