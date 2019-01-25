@@ -2,66 +2,51 @@ package com.example.seg_lab1;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TextView;
-
-
-
-import java.text.DecimalFormat;
 
 public class SummaryScreen extends AppCompatActivity {
     private EditText mLoanAmount, mInterestRate, mLoanPeriod;
     private TextView mMonthlyPaymentResult,mTotalPaymentsResult;
+    private String  periodic_payment,total_payment, mortgage_amount, interest_rate, amortisation_period, payment_frequency ;
 //    public static final String[] currency = {"Select your currency...","$", "€","£"};
 //    public static final String[] payment_mode = {"Select your payment mode...","bi-weekly", "weekly", "monthly"};
 //    private Spinner spinner, secondSpinner;
 //    private String [] answers = new String [5];
+//
+//                intent.putExtra("MORTGAGE_AMOUNT",  answers[0]);
+//            intent.putExtra("INTEREST_RATE",  answers[1]);
+//            intent.putExtra("AMORTISATION_PERIOD", answers[2]);
+//            intent.putExtra("CURRENCY", currentCurrency);
+//            intent.putExtra("PAYMENT_FREQUENCY", currentPayment_mode);
+//            intent.putExtra("PAYMENT", new DecimalFormat("##.##").format(showLoanPayments()[0]));
+//            intent.putExtra("TOTAL_AMOUNT", new DecimalFormat("##.##").format(showLoanPayments()[1]));
 
 
-//    public void showLoanPayments(View clickedButton){
-//        double loanAmount = Integer.parseInt(mLoanAmount.getText().toString());
-//        double interestRate = Integer.parseInt(mInterestRate.getText().toString());
-//        double loanPeriod = Integer.parseInt(mLoanPeriod.getText().toString());
-//        double r = interestRate/1200;
-//        double r1=Math.pow(r+1,loanPeriod);
-//
-//        double monthlyPayment = (double) ((r+(r/(r1-1)))*loanAmount);
-//        double totalPayment = monthlyPayment*loanPeriod;
-//        mMonthlyPaymentResult.setText(new DecimalFormat("##.##").format(monthlyPayment));
-//        mTotalPaymentsResult.setText(new DecimalFormat("##.##").format(totalPayment));
-//
-//    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.summary_screen);
+
+        mMonthlyPaymentResult = findViewById(R.id.monthly_payment_result);
+        mTotalPaymentsResult = findViewById(R.id.total_payment_result);
+
+        Intent intent = getIntent();
+        Bundle bd = intent.getExtras();
+        if(bd != null)
+        {
+            mMonthlyPaymentResult.setText(bd.get("PAYMENT").toString());
+            mTotalPaymentsResult.setText(bd.get("TOTAL_AMOUNT").toString());
+        }
+
     }
 
-//        mLoanAmount = (EditText)findViewById(R.id.loan_amount);
-//        mInterestRate = (EditText)findViewById(R.id.interest_rate);
-//        mLoanPeriod= (EditText)findViewById(R.id.loan_period);
-//
-//        spinner = (Spinner)findViewById(R.id.currency);
-//        secondSpinner = (Spinner)findViewById(R.id.payment_frequency);
-//
-//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-//                android.R.layout.simple_spinner_item,currency);
-//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        spinner.setAdapter(adapter);
-//
-//        ArrayAdapter<String> secondAdapter = new ArrayAdapter<String>(this,
-//                android.R.layout.simple_spinner_item,payment_mode);
-//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        secondSpinner.setAdapter(secondAdapter);
-//    }
 
-//    public void OnFinish(View view) {
+//    public void OnMoreDetails(View view) {
 //
 //        answers[0] =  mLoanAmount.getText().toString();
 //        answers[1] = mInterestRate.getText().toString();

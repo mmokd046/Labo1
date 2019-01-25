@@ -22,15 +22,19 @@
             android:gravity="right"/>
         <EditText android:id="@+id/interest_rate"
             android:inputType="numberDecimal"
+            android:hint="ex: 10%"
             android:layout_height="wrap_content"/>
     </TableRow>
     <TableRow>
-        <TextView android:layout_width="wrap_content"
+
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/loan_period_prompt"
-            android:gravity="right"/>
+            android:gravity="right"
+            android:text="Amortization period " />
         <EditText android:id="@+id/loan_period"
             android:inputType="number"
+            android:hint="ex :10 years "
             android:layout_height="wrap_content"/>
     </TableRow>
     <TableRow>
@@ -39,11 +43,12 @@
             android:layout_width="311dp"
             android:layout_height="wrap_content"
             android:layout_span="2"
-            android:onClick="showLoanPayments"
+            android:onClick="OnFinish"
             android:text="@string/loan_button_text" />
         <ImageView
             android:id="@+id/phone_icon"
             android:layout_width="wrap_content"
+            android:onClick="Onsettings"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:src="@drawable/ic_settings_applications_black_24dp" />
