@@ -1,57 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android= "http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:stretchColumns="1"
-    android:shrinkColumns="1">
-    <TableRow>
-        <TextView android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/loan_amount_prompt"
-            android:gravity="right"/>
-        <EditText android:id="@+id/loan_amount"
-            android:inputType="numberDecimal"
-            android:layout_height="wrap_content">
-            <requestFocus></requestFocus>
-        </EditText>
-    </TableRow>
-    <TableRow>
-        <TextView android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/interest_rate_prompt"
-            android:gravity="right"/>
-        <EditText android:id="@+id/interest_rate"
-            android:inputType="numberDecimal"
-            android:hint="ex: 10%"
-            android:layout_height="wrap_content"/>
-    </TableRow>
-    <TableRow>
+    tools:context=".MainActivity">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="right"
-            android:text="Amortization period " />
-        <EditText android:id="@+id/loan_period"
-            android:inputType="number"
-            android:hint="ex :10 years "
-            android:layout_height="wrap_content"/>
-    </TableRow>
-    <TableRow>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <Button
-            android:layout_width="311dp"
-            android:layout_height="wrap_content"
-            android:layout_span="2"
-            android:onClick="OnFinish"
-            android:text="@string/loan_button_text" />
-        <ImageView
-            android:id="@+id/phone_icon"
-            android:layout_width="wrap_content"
-            android:onClick="Onsettings"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:src="@drawable/ic_settings_applications_black_24dp" />
-    </TableRow>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
 
-</TableLayout>
+            <TextView
+                android:id="@+id/welcomePage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Welcome Page" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/mortgageAmount"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Mortgage Amount" />
+
+            <EditText
+                android:id="@+id/mortgageAmountEntered"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:hint="ex: 20000 (in $)"
+                android:inputType="numberDecimal">
+
+                <requestFocus></requestFocus>
+            </EditText>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/interestRate"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Interest Rate" />
+
+            <EditText
+                android:id="@+id/interestRateEntered"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:hint="ex: 3.74 (in %)"
+                android:inputType="numberDecimal" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/amortizationPeriod"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Amortization period " />
+
+            <EditText
+                android:id="@+id/amortizationPeriodEntered"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:hint="ex: 24 (in month)"
+                android:inputType="number" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/calculatePayments"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:onClick="OnFinish"
+                android:layout_weight="1"
+                android:text="Calculate Payments" />
+
+            <ImageView
+                android:id="@+id/settings"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:onClick="Onsettings"
+                app:srcCompat="@android:drawable/ic_menu_manage" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

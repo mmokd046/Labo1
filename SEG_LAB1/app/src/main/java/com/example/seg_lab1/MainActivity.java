@@ -13,11 +13,10 @@ import java.text.DecimalFormat;
 
 public class MainActivity extends AppCompatActivity {
     private EditText mLoanAmount, mInterestRate, mLoanPeriod;
-    private TextView mMonthlyPaymentResult,mTotalPaymentsResult;
     public String currentCurrency;
     public String currentPayment_mode;
     private String [] answers = new String [3];
-
+    public static final String[] amortisation_period_unit = {"Select amortisation period unit","year", "month"};
 
     public Double [] showLoanPayments(){
         verifyAmountEntered(mLoanAmount.getText().toString());
@@ -81,15 +80,18 @@ public class MainActivity extends AppCompatActivity {
         if(bd != null)
         {
             currentCurrency = bd.get("CURRENT_CURRENCY").toString();
-            currentPayment_mode = bd.get("PAYMENT_MODE").toString();
+            currentPayment_mode = bd.get("PAYMENT_FREQUENCY").toString();
         } else {
             currentCurrency = "$";
             currentPayment_mode = "monthly";
         }
 
-        mLoanAmount = (EditText)findViewById(R.id.loan_amount);
-        mInterestRate = (EditText)findViewById(R.id.interest_rate);
-        mLoanPeriod= (EditText)findViewById(R.id.loan_period);
+        mLoanAmount = (EditText)findViewById(R.id.mortgageAmountEntered);
+        mInterestRate = (EditText)findViewById(R.id.interestRateEntered);
+        mLoanPeriod= (EditText)findViewById(R.id.amortizationPeriodEntered);
+
+        mLoanAmount.setHint("ex : 10,000 "+ currentCurrency );
+
     }
 
     public void Onsettings (View view) {

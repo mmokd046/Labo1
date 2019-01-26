@@ -61,7 +61,7 @@ public class Settings extends AppCompatActivity {
             alert.show();
         } else  {
             Intent intent = new Intent(this, MainActivity.class);
-            intent.putExtra("CURRENCY", currentcurrency);
+            intent.putExtra("CURRENT_CURRENCY", currentcurrency);
             intent.putExtra("PAYMENT_FREQUENCY", payment_frequency);
             startActivity(intent);
         }
