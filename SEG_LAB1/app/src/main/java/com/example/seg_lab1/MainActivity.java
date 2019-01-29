@@ -5,8 +5,10 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.text.DecimalFormat;
@@ -17,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
     public String currentPayment_mode;
     private String [] answers = new String [3];
     public static final String[] amortisation_period_unit = {"Select amortisation period unit","year", "month"};
+    public Spinner timeSpinner;
+    public static final String[] time = {"Select Time", "month", "year",};
 
     public Double [] showLoanPayments(){
         verifyAmountEntered(mLoanAmount.getText().toString());
@@ -24,45 +28,32 @@ public class MainActivity extends AppCompatActivity {
         verifyAmountEntered(mLoanPeriod.getText().toString());
         double loanAmount = Double.parseDouble(mLoanAmount.getText().toString());
         double interestRate = Double.parseDouble(mInterestRate.getText().toString());
-        double loanPeriod = Double.parseDouble(mLoanPeriod.getText().toString());
-        double r = interestRate/1200;
-        double r1=Math.pow(r+1,loanPeriod);
+        double loanPeriod = 0;
+
+
+        if(timeSpinner.getSelectedItem().toString().equals(time[1])){
+            loanPeriod=Double.parseDouble(mLoanPeriod.getText().toString());
+        } else if(timeSpinner.getSelectedItem().toString().equals(time[2])){
+            loanPeriod=Double.parseDouble(mLoanPeriod.getText().toString())*12;
+
+        }
+        double r=0;
+        double r1=0;
+        r = interestRate/1200;
+        r1=Math.pow(r+1,loanPeriod);
+
         Double [] payments = new Double[2];
         if (currentPayment_mode.equals("monthly")) {
-            if (currentCurrency.equals("$")) {
                 payments [0] = ((r+(r/(r1-1)))*loanAmount);
                 payments [1] = payments [0]*loanPeriod;
-            } else if (currentCurrency.equals("£")) {
-                payments [0] = ((r+(r/(r1-1)))*loanAmount) * 0.57;
-                payments [1] = payments [0]*loanPeriod;
-            } else {
-                payments [0] = ((r+(r/(r1-1)))*loanAmount) * 0.66;
-                payments [1] = payments [0]*loanPeriod;
-            }
         } else if (currentPayment_mode.equals("bi-weekly")) {
-            if (currentCurrency.equals("$")) {
                 payments [0] = ((r+(r/(r1-1)))*loanAmount) / 2;
-                payments [1] = payments [0]*loanPeriod;
-            } else if (currentCurrency.equals("£")) {
-                payments [0] = (((r+(r/(r1-1)))*loanAmount) * 0.57)/2;
-                payments [1] = payments [0]*loanPeriod;
-            } else {
-                payments [0] = (((r+(r/(r1-1)))*loanAmount) * 0.66) / 2;
-                payments [1] = payments [0]*loanPeriod;
-            }
-        } else {
-            if (currentCurrency.equals("$")) {
-                payments [0] = ((r+(r/(r1-1)))*loanAmount) / 4;
-                payments [1] = payments [0]*loanPeriod;
-            } else if (currentCurrency.equals("£")) {
-                payments [0] = (((r+(r/(r1-1)))*loanAmount) * 0.57)/4;
-                payments [1] = payments [0]*loanPeriod;
-            } else {
-                payments [0] = (((r+(r/(r1-1)))*loanAmount) * 0.66) / 4;
-                payments [1] = payments [0]*loanPeriod;
-            }
-        }
+                payments [1] = payments [0]*loanPeriod*2;
 
+        } else {
+                payments [0] = ((r+(r/(r1-1)))*loanAmount) / 4;
+                payments [1] = payments [0]*loanPeriod*4;
+        }
         return payments;
     }
 
@@ -92,6 +83,12 @@ public class MainActivity extends AppCompatActivity {
 
         mLoanAmount.setHint("ex : 10,000 "+ currentCurrency );
 
+        timeSpinner=findViewById(R.id.timeSpinner);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item,time);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        timeSpinner.setAdapter(adapter);
+
     }
 
     public void Onsettings (View view) {
@@ -99,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void OnFinish(View view) {
+    public void OnFinish(View view) ={
 
         answers[0] =  mLoanAmount.getText().toString();
         answers[1] = mInterestRate.getText().toString();

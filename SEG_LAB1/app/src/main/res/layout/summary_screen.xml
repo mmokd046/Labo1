@@ -1,47 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+android:layout_height="match_parent">
 
-    <TableLayout xmlns:android= "http://schemas.android.com/apk/res/android"
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:stretchColumns="1"
-        android:shrinkColumns="1">
+        android:layout_weight="2"
+        android:gravity="center">
 
+        <TextView
+            android:id="@+id/summaryPage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:text="Summary Calculations" />
 
+    </LinearLayout>
 
-        <TableRow android:layout_marginTop="100dp">
-            <TextView android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Payment amount:"
-                android:gravity="right"/>
-            <TextView android:id="@+id/monthly_payment_result"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#ff0000"
-                android:layout_marginTop="20dp"
-                android:gravity="left"/>
-        </TableRow>
-        <TableRow>
-            <TextView android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Total payment:"
-                android:gravity="right"/>
-            <TextView android:id="@+id/total_payment_result"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="#ff0000"
-                android:gravity="left"/>
-        </TableRow>
-        <Button
-            android:id="@+id/buttonFinish"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/paymentAmount"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Payment Amount" />
+
+        <TextView
+            android:id="@+id/paymentAmountCalc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="#ff0000" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/balanceEndTerm"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Balance End Term" />
+
+        <TextView
+            android:id="@+id/balanceEndTermCalc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="#ff0000" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/moreDetails"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:hapticFeedbackEnabled="false"
             android:onClick="OnNext"
-            android:text="MORE DETAILS"
-            android:layout_marginTop="20dp" />
-    </TableLayout>
+            android:text="More Details" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="2"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/returnWelcomeScreen"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:hapticFeedbackEnabled="false"
+            android:onClick="BackTo"
+            android:text="New Calculation (Back To Welcome Screen)" />
+    </LinearLayout>
+</LinearLayout>
 </android.support.constraint.ConstraintLayout>

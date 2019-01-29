@@ -13,7 +13,7 @@ import org.w3c.dom.Text;
 import java.text.DecimalFormat;
 
 public class Details extends AppCompatActivity {
-    private TextView mortgage_amount,interest_rate, amortisation_period, currency, payment_frequency, interest_paid, payment_amount;
+    private TextView mortgage_amount,interest_rate, amortisation_period, payment_frequency, interest_paid, payment_amount, principal_ammount, final_amount;
     private String  periodic_payment,total_payment, mortGageAmountValue, interestRateValue, amortisationPeriodValue, paymentFrequencyValue,currentCurrency;
 
 
@@ -29,13 +29,17 @@ public class Details extends AppCompatActivity {
             amortisationPeriodValue = bd.get("AMORTISATION_PERIOD").toString();
             paymentFrequencyValue = bd.get("PAYMENT_FREQUENCY").toString();
             currentCurrency = bd.get("CURRENCY").toString();
+
             double  interestPaid = Double.parseDouble(total_payment) - Double.parseDouble(mortGageAmountValue);
-            payment_amount.setText(total_payment);
-            mortgage_amount.setText(interestRateValue);
-            interest_rate.setText(periodic_payment + " %");20
+
+            payment_amount.setText(periodic_payment+" "+currentCurrency+ "/"+paymentFrequencyValue);
+            mortgage_amount.setText(mortGageAmountValue+" "+currentCurrency);
+            interest_rate.setText(interestRateValue + " %");
             amortisation_period.setText(amortisationPeriodValue);
-            currency.setText(currentCurrency);
+            //currency.setText(currentCurrency);
             payment_frequency.setText(paymentFrequencyValue);
+            principal_ammount.setText(mortGageAmountValue);
+            final_amount.setText(total_payment);
             interest_paid.setText(new DecimalFormat("##.##").format(interestPaid));
         }
     }
@@ -45,21 +49,20 @@ public class Details extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.details);
 
-
-        mortgage_amount = findViewById(R.id.payment_amount);
-        interest_rate = findViewById(R.id.mortgage_amount);
-        amortisation_period = findViewById(R.id.interest_rate);
-        currency = findViewById(R.id.amortization_period);
-        payment_frequency = findViewById(R.id.payment_frequency);
-        interest_paid = findViewById(R.id.interest_paid);
-        payment_amount = findViewById(R.id.payment_amount);
+        mortgage_amount = findViewById(R.id.mortgageAmountEntered);
+        interest_rate = findViewById(R.id.interestRateEntered);
+        amortisation_period = findViewById(R.id.amortizationPeriodEntered);
+        //currency = findViewById(R.id.);
+        payment_frequency = findViewById(R.id.paymentFrequencyCalc);
+        interest_paid = findViewById(R.id.interestPayedCalc);
+        payment_amount = findViewById(R.id.paymentAmountCalc);
+        final_amount=findViewById(R.id.totalPaymentOverTermCalc);
+        principal_ammount = findViewById(R.id.principalPayedCalc);
         DisplayPaymentInfo();
-
     }
 
 
     public void OnNext(View view) {
-
             Intent intent = new Intent(this, SummaryScreen.class);
             intent.putExtra("MORTGAGE_AMOUNT",  mortGageAmountValue);
             intent.putExtra("INTEREST_RATE",  interestRateValue);

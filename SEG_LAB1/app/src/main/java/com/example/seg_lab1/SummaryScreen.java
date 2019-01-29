@@ -18,8 +18,8 @@ public class SummaryScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.summary_screen);
 
-        mMonthlyPaymentResult = findViewById(R.id.monthly_payment_result);
-        mTotalPaymentsResult = findViewById(R.id.total_payment_result);
+        mMonthlyPaymentResult = findViewById(R.id.paymentAmountCalc);
+        mTotalPaymentsResult = findViewById(R.id.balanceEndTermCalc);
 
         Intent intent = getIntent();
         Bundle bd = intent.getExtras();
@@ -32,7 +32,6 @@ public class SummaryScreen extends AppCompatActivity {
             amortisation_period = bd.get("AMORTISATION_PERIOD").toString();
             payment_frequency = bd.get("PAYMENT_FREQUENCY").toString();
             currentCurrency = bd.get("CURRENCY").toString();
-
             mMonthlyPaymentResult.setText( periodic_payment +" "+ currentCurrency+ " / " + payment_frequency);
             mTotalPaymentsResult.setText(total_payment + " "+ currentCurrency);
 
@@ -50,6 +49,10 @@ public class SummaryScreen extends AppCompatActivity {
         intent.putExtra("PAYMENT_FREQUENCY", payment_frequency);
         intent.putExtra("PAYMENT", periodic_payment);
         intent.putExtra("TOTAL_AMOUNT", total_payment);
+        startActivity(intent);
+    }
+    public void BackTo(View view){
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 }

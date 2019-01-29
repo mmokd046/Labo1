@@ -19,7 +19,7 @@ public class Settings extends AppCompatActivity {
     String currentcurrency, payment_frequency;
     public static final String[] currency = {"Select your currency", "$", "€","£"};
     public static final String[] payment_mode = {"Select the payment mode", "bi-weekly", "weekly", "monthly"};
-    Spinner spinner , secondSpinner;
+    Spinner spinner, secondSpinner;
 
 
     @Override
@@ -53,7 +53,7 @@ public class Settings extends AppCompatActivity {
             alert.setMessage("You need to fill up all the field");
             alert.setPositiveButton("OK",null);
             alert.show();
-        } else if (spinner.getSelectedItem().toString().equals(payment_mode[0])){
+        } else if (secondSpinner.getSelectedItem().toString().equals(payment_mode[0])){
             AlertDialog.Builder  alert = new AlertDialog.Builder(this);
             alert.setTitle("Invalid payment mode selected");
             alert.setMessage("Please chose a valid payment mode");
